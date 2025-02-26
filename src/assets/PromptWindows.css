@@ -1,0 +1,51 @@
+.prompt-box{
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    width: 35vw;
+    padding: 50px;
+    height: 25vw;
+    position: fixed;
+    justify-content: space-evenly;
+    left: 30%;
+    top: 25%;
+    align-items: center;
+    border-radius: 50px;
+}
+.prompt-box input{
+    width: 70%;
+    font-size: 30px;
+    background-color: rgb(190, 190, 190);
+    color: rgb(80, 80, 80);
+    border: none;
+    border-radius: 30px;
+    padding-left: 20px;
+}
+.currency-selector{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60%;
+}
+.confirming-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 50%;
+    cursor: pointer;
+}
+.currency-selector button, .confirming-buttons button{
+    font-size: 20px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.confirm-button{
+    background-color: #1D7B0E;
+    color: white;
+}
+.cancel-button{
+    background-color: #CD2626;
+    color: white;
+}

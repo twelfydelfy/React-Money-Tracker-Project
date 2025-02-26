@@ -1,0 +1,8 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60%;
+    margin-left: 20vw;
+    align-items: center
+}

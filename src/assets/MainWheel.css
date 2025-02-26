@@ -1,0 +1,102 @@
+body{
+    background-color: #F4F4F4;
+    font-family: Roboto;
+}
+.main-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-size: 60px;
+    font-family: Kalam;
+    text-align: center;
+}
+.around-wheel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 55%;
+}
+.wheel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 50%;
+    padding: 60px;
+    height: 400px;
+    width: 400px;
+    aspect-ratio: 1;
+    background-color: #fff;     
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.currency{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.currency button, .timespace button{
+    font-size: 32px;
+    font-family: Roboto;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #D9D9D9;
+    transition: background-color 0.3s;
+    
+}
+.currency button:hover, .timespace button:hover {
+    background-color: #c0c0c0;
+}
+.amount{
+    font-family: Roboto;
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+.earned{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.earned p{
+    font-size: 2em;
+}
+.ammount-earned{
+    color: #1D7B0E;
+}
+.ammount-spent{
+    color: #CD2626;
+}
+.timespace{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.plus{
+    font-size: 96px;
+    color: #1D7B0E;
+}
+.plus, .minus {
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 100px; 
+    height: 115px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-bottom: 12.5px;
+    color: inherit;
+
+}
+.minus{
+    font-size: 128px;
+    color: #CD2626;
+}
