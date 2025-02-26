@@ -1,8 +1,11 @@
 // src/Plus-Window.jsx
 import './assets/PromptWindows.css';
 import React, { useState, useRef } from 'react';
+import { useAmount } from './Main-Wheel';
 
 function PlusWindow() {
+  const {amount, setAmount} = useAmount();
+  const {earnedAmount, setEarnedAmount} = useAmount();
   const [showPrompt, changePrompt] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const inputRef = useRef();
@@ -24,9 +27,10 @@ function PlusWindow() {
       setErrorMessage(true);
     } else {
       setErrorMessage(false);
-      
+      setAmount(amount + newAmount);
+      setEarnedAmount ((prevEarned) => prevEarned + newAmount);
       changePrompt(false); // Close prompt
-      inputRef.current.value = ''; // Clear input
+      inputRef.current.value = '';
     }
   }
 

@@ -5,8 +5,10 @@ import "./assets/MainWheel.css";
 import App from "./Main-Wheel.jsx";
 import PlusWindow from "./Plus-Window.jsx";
 import MinusWindow from "./Minus-Window.jsx";
+import { AmountProvider } from "./Main-Wheel.jsx";
 
 createRoot(document.getElementById("root")).render(
+  <AmountProvider>
     <StrictMode>
       <p className="title">Daniel&apos;s Money Tracker</p>
       <div className="main">
@@ -14,5 +16,5 @@ createRoot(document.getElementById("root")).render(
         <App />
         <MinusWindow />
       </div>
-    </StrictMode>
+    </StrictMode></AmountProvider>
 );

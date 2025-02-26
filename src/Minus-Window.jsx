@@ -1,6 +1,9 @@
 import './assets/PromptWindows.css'
 import React, {useState, useRef} from 'react';
+import { useAmount } from './Main-Wheel';
 function MinusWindow(){
+    const {amount, setAmount} = useAmount();
+    const {spentAmount, setSpentAmount} = useAmount();
     const [showPrompt, changePrompt] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
     const inputRef = useRef();
@@ -12,11 +15,14 @@ function MinusWindow(){
         changePrompt(false);
     }
     function handleConfirmClick(){
+        const inputValue = inputRef.current.value;
+        const NewAmount = Number(inputValue)
         if(NewAmount < 0){
             setErrorMessage(true);
             inputRef.current.value = '';
         }else{
-            console.log(NewAmount);
+            setAmount(amount - NewAmount);
+            setSpentAmount((prevAmount) => prevAmount - NewAmount);
             inputRef.current.value = '';
             changePrompt(false);
         }
