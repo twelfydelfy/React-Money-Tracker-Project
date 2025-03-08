@@ -17,7 +17,7 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 55%;
+    width: 100%;
 }
 .wheel{
     display: flex;

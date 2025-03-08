@@ -2,11 +2,11 @@ import './assets/PromptWindows.css'
 import React, {useState, useRef} from 'react';
 import { useAmount } from './Main-Wheel';
 function MinusWindow(){
-    const {amount, setAmount} = useAmount();
-    const {spentAmount, setSpentAmount} = useAmount();
+    const {spentAmount, setSpentAmount, currencies, amount, setAmount} = useAmount();
     const [showPrompt, changePrompt] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
     const inputRef = useRef();
+    const [currentCurrency, setCurrentCurrency] = useState(currencies.mdl)
     
     function handleMinusClick(){
         changePrompt(true);
@@ -16,16 +16,24 @@ function MinusWindow(){
     }
     function handleConfirmClick(){
         const inputValue = inputRef.current.value;
-        const NewAmount = Number(inputValue)
+        let NewAmount = Number(inputValue)
         if(NewAmount < 0){
             setErrorMessage(true);
             inputRef.current.value = '';
         }else{
+            if(currentCurrency.name === 'USD'){
+             NewAmount = NewAmount / currentCurrency.rate;   
+            }else if(currentCurrency.name === 'EUR'){
+                NewAmount = NewAmount / currentCurrency.rate;
+            }
             setAmount(amount - NewAmount);
             setSpentAmount((prevAmount) => prevAmount - NewAmount);
             inputRef.current.value = '';
             changePrompt(false);
         }
+    }
+    function handleCurrencyFormat(currencyKey){
+        setCurrentCurrency(currencies[currencyKey]);
     }
 
     return(
@@ -39,9 +47,9 @@ function MinusWindow(){
             <input type="number" placeholder="Ammount" ref={inputRef}/>
             <p style={{display: errorMessage? 'inline-block':'none'}}>You need to input a corect number</p>
             <div className="currency-selector">
-                <button>MDL</button>
-                <button>USD</button>
-                <button>EUR</button>
+                <button style={{backgroundColor: currentCurrency.name === 'MDL' ? 'green': '#D9D9D9', color: currentCurrency.name === 'MDL'?'white':'black'}} onClick={() => handleCurrencyFormat('mdl')}>MDL</button>
+                <button style={{backgroundColor: currentCurrency.name === 'USD' ? 'green': '#D9D9D9', color: currentCurrency.name === 'USD'?'white':'black'}} onClick={() => handleCurrencyFormat('usd')}>USD</button>
+                <button style={{backgroundColor: currentCurrency.name === 'EUR' ? 'green': '#D9D9D9', color: currentCurrency.name === 'EUR'?'white':'black'}} onClick={() => handleCurrencyFormat('eur')}>EUR</button>
             </div>
             <div className="confirming-buttons">
                 <button className='confirm-button' onClick={handleConfirmClick}>Confirm</button>
