@@ -4,6 +4,10 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 const AmountC = createContext();
 
+
+//This is basically the place where I define every single global variabile
+
+
 export function AmountProvider({children}){
   const [amount, setAmount] = useState(() => {
     const amount = localStorage.getItem('amount');
@@ -17,6 +21,15 @@ export function AmountProvider({children}){
     const spentAmount = localStorage.getItem('spentAmount');
     return spentAmount !== null ? Number(JSON.parse(spentAmount)) : 0;
   });
+  const [SpentHistory, setSpentHistory] = useState([{
+    name: 'First',
+    amount: 10
+  }]);
+  const [EarnedHistory, setEarnedHistory] = useState([{
+    name: 'First',
+    amount: 20
+  }]);
+
   
   const [currencies, setCurrencies] = useState( {
     mdl: { name: 'MDL', rate: 1 },
@@ -56,19 +69,27 @@ useEffect(() => {
       setEarnedAmount,
       spentAmount, 
       setSpentAmount, 
-      currencies
+      currencies,
+      EarnedHistory,
+      setEarnedHistory,
+      SpentHistory,
+      setSpentHistory
     }}>
       {children}
     </AmountC.Provider>
   )
 }
 
+
+//Now we actually move on to the Main Wheel
+
+
 function formatAmount(amount, currencyObj) {
   return amount * currencyObj.rate;
 }
 
 export function useAmount(){
-  return useContext(AmountC);
+  return useContext(AmountC); 
 }
 
 function App() {

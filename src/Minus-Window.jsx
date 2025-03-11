@@ -2,10 +2,11 @@ import './assets/PromptWindows.css'
 import React, {useState, useRef} from 'react';
 import { useAmount } from './Main-Wheel';
 function MinusWindow(){
-    const {spentAmount, setSpentAmount, currencies, amount, setAmount} = useAmount();
+    const {spentAmount, setSpentAmount, currencies, amount, setAmount, SpentHistory, setSpentHistory} = useAmount();
     const [showPrompt, changePrompt] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
     const inputRef = useRef();
+    const categoryRef = useRef();
     const [currentCurrency, setCurrentCurrency] = useState(currencies.mdl)
     
     function handleMinusClick(){
@@ -16,6 +17,7 @@ function MinusWindow(){
     }
     function handleConfirmClick(){
         const inputValue = inputRef.current.value;
+        const categoryValue = categoryRef.current.value;
         let NewAmount = Number(inputValue)
         if(NewAmount < 0){
             setErrorMessage(true);
@@ -30,6 +32,10 @@ function MinusWindow(){
             setSpentAmount((prevAmount) => prevAmount - NewAmount);
             inputRef.current.value = '';
             changePrompt(false);
+            setSpentHistory(c => [...c, {
+                name: categoryValue,
+                amount: inputValue
+            }])
         }
     }
     function handleCurrencyFormat(currencyKey){
@@ -46,6 +52,7 @@ function MinusWindow(){
             <p>Substract an Ammount</p>
             <input type="number" placeholder="Ammount" ref={inputRef}/>
             <p style={{display: errorMessage? 'inline-block':'none'}}>You need to input a corect number</p>
+            <input type="text" ref={categoryRef}/>
             <div className="currency-selector">
                 <button style={{backgroundColor: currentCurrency.name === 'MDL' ? 'green': '#D9D9D9', color: currentCurrency.name === 'MDL'?'white':'black'}} onClick={() => handleCurrencyFormat('mdl')}>MDL</button>
                 <button style={{backgroundColor: currentCurrency.name === 'USD' ? 'green': '#D9D9D9', color: currentCurrency.name === 'USD'?'white':'black'}} onClick={() => handleCurrencyFormat('usd')}>USD</button>

@@ -1,32 +1,19 @@
 import React from "react";
 import './assets/History.css'
-
+import { useAmount } from "./Main-Wheel";
 export default function History(){
-    const Income = [{
-        name: 'Weekly Allowance',
-        ammount: 500
-    }];
-    const Spendings = [{
-        name: 'Water',
-        ammount: 6.5
-    },
-    {
-        name: 'Gym Membership',
-        ammount: 500
-    }
-];
-
-
+    
+    const {EarnedHistory, setEarnedHistory, SpentHistory, setSpentHistory} = useAmount();
     return(
         <div className="history-box">
             <div className="income-box">
                 <h1>Income</h1>
                 <hr />
                 <div className="income-content">
-                    {Income.map((item, index) => (
+                    {EarnedHistory.map((item, index) => (
                         <div key={index} className="content-box">
                             <p className="content-name">{item.name}</p>
-                            <p className="content-ammount">{item.ammount}</p>
+                            <p className="content-ammount">{item.amount}</p>
                         </div>
                     ))}
                 </div>
@@ -35,10 +22,10 @@ export default function History(){
                 <h1>Spending</h1>
                 <hr />
                 <div className="spendings-content">
-                {Spendings.map((item, index) => (
+                {SpentHistory.map((item, index) => (
                         <div key={index} className="content-box">
                             <p className="content-name">{item.name}</p>
-                            <p className="content-ammount">{item.ammount}</p>
+                            <p className="content-ammount">{item.amount}</p>
                         </div>
                     ))}
                 </div>

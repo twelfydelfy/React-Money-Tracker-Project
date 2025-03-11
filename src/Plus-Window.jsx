@@ -4,11 +4,18 @@ import React, { useState, useRef } from 'react';
 import { useAmount } from './Main-Wheel';
 
 function PlusWindow() {
-  const {earnedAmount, setEarnedAmount, amount, setAmount, currencies} = useAmount();
+  const {earnedAmount, setEarnedAmount, amount, setAmount, currencies, EarnedHistory, setEarnedHistory} = useAmount();
   const [showPrompt, changePrompt] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const inputRef = useRef();
   const [currentCurrency, setCurrentCurrency] = useState(currencies.mdl);
+  const categoryRef = useRef();
+  const [category, changeCategory] = useState(
+    {
+      name: 'Error',
+      price: 0
+    }
+  )
 
   function handlePlusClick() {
     changePrompt(true);
@@ -21,6 +28,7 @@ function PlusWindow() {
 
   function handleConfirm() {
     const inputValue = inputRef.current.value;
+    const categoryValue = categoryRef.current.value;
     let newAmount = Number(inputValue);
 
     if (isNaN(newAmount) || newAmount < 0) {
@@ -37,6 +45,10 @@ function PlusWindow() {
       setEarnedAmount ((prevEarned) => prevEarned + newAmount);
       changePrompt(false);
       inputRef.current.value = '';
+      setEarnedHistory(e => [...e, {
+        name: categoryValue,
+        amount: inputValue
+      }]);
     }
   }
   function handleCurrencyFormat(currencyKey){
@@ -57,6 +69,7 @@ function PlusWindow() {
         >
           You need to input a valid number
         </p>
+        <input type='text' placeholder=" "ref={categoryRef} />
         <div className="currency-selector">
           <button style={{backgroundColor: currentCurrency.name === 'MDL' ? 'green' : '#D9D9D9', color: currentCurrency.name === 'MDL'?'white':'black'}} 
            onClick={() => handleCurrencyFormat('mdl')}>MDL</button>
