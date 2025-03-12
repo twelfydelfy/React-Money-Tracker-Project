@@ -45,10 +45,12 @@ function PlusWindow() {
       setEarnedAmount ((prevEarned) => prevEarned + newAmount);
       changePrompt(false);
       inputRef.current.value = '';
-      setEarnedHistory(e => [...e, {
-        name: categoryValue,
-        amount: inputValue
-      }]);
+      setEarnedHistory( e =>{
+        const newHistory = [...e, { name: categoryValue, amount: inputValue }];
+      localStorage.setItem('EarnedHistory', JSON.stringify(newHistory));
+      return newHistory;
+    });
+      
     }
   }
   function handleCurrencyFormat(currencyKey){

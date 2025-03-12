@@ -32,10 +32,14 @@ function MinusWindow(){
             setSpentAmount((prevAmount) => prevAmount - NewAmount);
             inputRef.current.value = '';
             changePrompt(false);
-            setSpentHistory(c => [...c, {
+            setSpentHistory(c => {
+                const newHistory = [...c, {
                 name: categoryValue,
-                amount: inputValue
-            }])
+                amount: inputValue}];
+                localStorage.setItem('SpentHistory', JSON.stringify(newHistory));
+                return newHistory;
+            });
+            
         }
     }
     function handleCurrencyFormat(currencyKey){

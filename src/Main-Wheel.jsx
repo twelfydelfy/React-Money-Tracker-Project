@@ -21,14 +21,14 @@ export function AmountProvider({children}){
     const spentAmount = localStorage.getItem('spentAmount');
     return spentAmount !== null ? Number(JSON.parse(spentAmount)) : 0;
   });
-  const [SpentHistory, setSpentHistory] = useState([{
-    name: 'First',
-    amount: 10
-  }]);
-  const [EarnedHistory, setEarnedHistory] = useState([{
-    name: 'First',
-    amount: 20
-  }]);
+  const [SpentHistory, setSpentHistory] = useState(()=>{
+    const SpentHistory = localStorage.getItem('SpentHistory');
+    return SpentHistory !== null ? JSON.parse(SpentHistory) : [];   
+});
+  const [EarnedHistory, setEarnedHistory] = useState(()=>{
+    const EarnedHistory = localStorage.getItem('EarnedHistory');
+    return EarnedHistory !== null? JSON.parse(EarnedHistory) : [];
+  }); 
 
   
   const [currencies, setCurrencies] = useState( {
@@ -100,7 +100,9 @@ function App() {
     setEarnedAmount, 
     spentAmount, 
     setSpentAmount, 
-    currencies 
+    currencies,
+    setEarnedHistory,
+    setSpentHistory
   } = useAmount();
   
   const [currentCurrency, setCurrentCurrency] = useState(currencies.mdl);
@@ -109,6 +111,8 @@ function App() {
     setAmount(0);
     setEarnedAmount(0);
     setSpentAmount(0);
+    setEarnedHistory([]);
+    setSpentHistory([]);
   }
 
   function handleCurrencyFormat(currencyKey){
