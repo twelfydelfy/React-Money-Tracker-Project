@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import './assets/PromptWindows.css'
 import React, {useState, useRef} from 'react';
-import { useAmount } from './Main-Wheel';
+import { useAmount } from './Data';
 function MinusWindow(){
     const {spentAmount, setSpentAmount, currencies, amount, setAmount, SpentHistory, setSpentHistory} = useAmount();
     const [showPrompt, changePrompt] = useState(false);

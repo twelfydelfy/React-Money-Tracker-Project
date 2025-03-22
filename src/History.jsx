@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import './assets/History.css'
-import { useAmount } from "./Main-Wheel";
+import { useAmount } from "./Data";
 export default function History(){
     
     const {EarnedHistory, setEarnedHistory, SpentHistory, setSpentHistory} = useAmount();

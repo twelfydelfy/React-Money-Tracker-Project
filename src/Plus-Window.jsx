@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 // src/Plus-Window.jsx
 import './assets/PromptWindows.css';
 import React, { useState, useRef } from 'react';
-import { useAmount } from './Main-Wheel';
+import { useAmount } from './Data';
 
 function PlusWindow() {
   const {earnedAmount, setEarnedAmount, amount, setAmount, currencies, EarnedHistory, setEarnedHistory} = useAmount();
