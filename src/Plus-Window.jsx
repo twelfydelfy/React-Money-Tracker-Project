@@ -46,11 +46,13 @@ function PlusWindow() {
       setEarnedAmount ((prevEarned) => prevEarned + newAmount);
       changePrompt(false);
       inputRef.current.value = '';
+      categoryRef.current.value = '';
       setEarnedHistory( e =>{
         const newHistory = [...e, { name: categoryValue, amount: inputValue }];
       localStorage.setItem('EarnedHistory', JSON.stringify(newHistory));
       return newHistory;
     });
+    
       
     }
   }
@@ -60,7 +62,7 @@ function PlusWindow() {
   return (
     <div>
       <button className="plus" onClick={handlePlusClick}>
-        +
+        ADD
       </button>
 
       <div className="prompt-box" style={{ display: showPrompt ? 'flex' : 'none' }}>

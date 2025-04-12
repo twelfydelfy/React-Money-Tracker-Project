@@ -9,24 +9,23 @@ export default function History(){
         <div className="history-box">
             <div className="income-box">
                 <h1>Income</h1>
-                <hr />
                 <div className="income-content">
                     {EarnedHistory.map((item, index) => (
                         <div key={index} className="content-box">
                             <p className="content-name">{item.name}</p>
-                            <p className="content-ammount">{item.amount}</p>
+                            <p className="content-amount">{item.amount}</p>
                         </div>
                     ))}
                 </div>
             </div>
+            <div className="line"></div>
             <div className="spendings-box">
-                <h1>Spending</h1>
-                <hr />
+                <h1>Spendings</h1>
                 <div className="spendings-content">
                 {SpentHistory.map((item, index) => (
                         <div key={index} className="content-box">
                             <p className="content-name">{item.name}</p>
-                            <p className="content-ammount">{item.amount}</p>
+                            <p className="content-amount">{item.amount}</p>
                         </div>
                     ))}
                 </div>

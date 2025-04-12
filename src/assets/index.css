@@ -1,10 +1,29 @@
-.main-box{
-    margin: auto;
+body{
+    margin: 0;
 }
-.main{
+.mainBoxMain{
     display: flex;
     flex-direction: row;
+    padding: 2%;
     justify-content: space-evenly;
-    width: 60%;
-    align-items: center
+    width: 100%;
+}
+.title{
+    font-family: Lato;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 0;
+    padding: 10px 0;
+}
+.left-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.managing{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

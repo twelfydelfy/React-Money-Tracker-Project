@@ -32,6 +32,7 @@ function MinusWindow(){
             setAmount(amount - NewAmount);
             setSpentAmount((prevAmount) => prevAmount - NewAmount);
             inputRef.current.value = '';
+            categoryRef.current.value = '';
             changePrompt(false);
             setSpentHistory(c => {
                 const newHistory = [...c, {
@@ -40,7 +41,6 @@ function MinusWindow(){
                 localStorage.setItem('SpentHistory', JSON.stringify(newHistory));
                 return newHistory;
             });
-            
         }
     }
     function handleCurrencyFormat(currencyKey){
@@ -50,7 +50,7 @@ function MinusWindow(){
     return(
         <div>
         <button className="minus" onClick={handleMinusClick}>
-            -
+            REMOVE
         </button>
 
         <div className="prompt-box" style={{display: showPrompt? 'flex' : 'none'}}>

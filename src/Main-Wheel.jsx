@@ -3,6 +3,8 @@
 import './assets/MainWheel.css';
 import React, { useState} from 'react';
 import { useAmount } from './Data';
+import PlusWindow from './Plus-Window';
+import MinusWindow from './Minus-Window';
 //Now we actually move on to the Main Wheel
 
 
@@ -41,23 +43,22 @@ function App() {
 
   return (
     <div className="main-box">
-      <div className="around-wheel">
         <div className="wheel">
           <div className="currency">
             <button 
-              style={{backgroundColor: currentCurrency.name === 'MDL' ? 'green' : '#D9D9D9', color: currentCurrency.name === 'MDL'?'white':'black'}} 
+              style={{backgroundColor: currentCurrency.name === 'MDL' ? '#637398' : 'transparent', color: currentCurrency.name === 'MDL'?'white':'black', borderColor: currentCurrency.name === 'MDL'?'#637398':'black'}} 
               onClick={() => handleCurrencyFormat('mdl')}
             >
               MDL
             </button>
             <button 
-              style={{backgroundColor: currentCurrency.name === 'USD' ? 'green' : '#D9D9D9', color: currentCurrency.name === 'USD'?'white':'black'}} 
+              style={{backgroundColor: currentCurrency.name === 'USD' ? '#637398' : 'transparent', color: currentCurrency.name === 'USD'?'white':'black', borderColor: currentCurrency.name === 'USD'?'#637398':'black'}} 
               onClick={() => handleCurrencyFormat('usd')}
             >
               USD
             </button>
             <button 
-              style={{backgroundColor: currentCurrency.name === 'EUR' ? 'green' : '#D9D9D9', color: currentCurrency.name === 'EUR' ? 'white':'black'}} 
+              style={{backgroundColor: currentCurrency.name === 'EUR' ? '#637398' : 'transparent', color: currentCurrency.name === 'EUR' ? 'white':'black', borderColor: currentCurrency.name === 'EUR'?'#637398':'black'}} 
               onClick={() => handleCurrencyFormat('eur')}
             >
               EUR
@@ -69,18 +70,24 @@ function App() {
           >
             {formattedAmount.toFixed(2)} {currentCurrency.name}
           </p>
+          <div className="dataButtons">
+            <PlusWindow />
+            <MinusWindow />
+          </div>
+          <h1 className="totals">Totals</h1>
+          <div className="timespace">
+            <button>W</button>
+            <button>M</button>
+            <button>T</button>
+          </div>
           <div className="earned">
             <p className="amount-earned">+{formatAmount(earnedAmount, currentCurrency).toFixed(2)}</p>
             <p className="amount-spent">-{formatAmount(spentAmount * -1, currentCurrency).toFixed(2)}</p>
           </div>
-          <div className="timespace">
-            <button>W</button>
-            <button>M</button>
-          </div>
-          <button onClick={resetMoney}>Reset</button>
+          
+          <button onClick={resetMoney} className='reset-button'>Reset</button>
           <p>USD: {(1/ currencies.usd.rate).toFixed(2)}     EUR: {(1/currencies.eur.rate).toFixed(2)}</p>
         </div>
-      </div>
     </div>
   );
 }
