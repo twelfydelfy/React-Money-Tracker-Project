@@ -56,12 +56,14 @@ body{
     font-weight: normal;
     font-size: 36px;
     margin-top: 15px;
+    margin-bottom: 0px;
 }
 .earned{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    margin-top: -20px;
 }
 .earned p{
     font-family: Lato;
@@ -72,6 +74,9 @@ body{
 }
 .ammount-spent{
     color: #CD2626;
+}
+.ammount-earned p, .ammount-spent p{
+    margin-top: -10px;
 }
 .timespace{
     display: flex;
@@ -136,4 +141,14 @@ body{
 .minus:hover{
     transform: scale(1.1);
     background-color: rgba(233, 20, 20, 0.852);
+}
+.disclaimer{
+    font-size: 14px;
+    text-align: center;
+}
+@media (max-width: 768px){
+    .wheel{
+        transform: scale(0.7);
+
+    }
 }

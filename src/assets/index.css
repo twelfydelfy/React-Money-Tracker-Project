@@ -27,3 +27,9 @@ body{
     flex-direction: row;
     align-items: center;
 }
+@media (max-width: 768px){
+    .mainBoxMain{
+        flex-direction: column;
+        padding: 0;
+    }
+}

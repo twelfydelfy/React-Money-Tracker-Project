@@ -74,12 +74,13 @@ function App() {
             <PlusWindow />
             <MinusWindow />
           </div>
-          <h1 className="totals">Totals</h1>
+          {/*<h1 className="totals">Totals</h1>
           <div className="timespace">
             <button>W</button>
             <button>M</button>
             <button>T</button>
-          </div>
+          </div>*/}
+          <h1 className='totals'>Totals</h1>
           <div className="earned">
             <p className="amount-earned">+{formatAmount(earnedAmount, currentCurrency).toFixed(2)}</p>
             <p className="amount-spent">-{formatAmount(spentAmount * -1, currentCurrency).toFixed(2)}</p>
@@ -87,6 +88,7 @@ function App() {
           
           <button onClick={resetMoney} className='reset-button'>Reset</button>
           <p>USD: {(1/ currencies.usd.rate).toFixed(2)}     EUR: {(1/currencies.eur.rate).toFixed(2)}</p>
+          <p className='disclaimer'>The rates are refreshed every day using an API call, <br></br> and the data saved to localstorage</p>
         </div>
     </div>
   );

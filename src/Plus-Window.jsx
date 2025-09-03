@@ -66,7 +66,7 @@ function PlusWindow() {
       </button>
 
       <div className="prompt-box" style={{ display: showPrompt ? 'flex' : 'none' }}>
-        <p>Add an Amount</p>
+        <p className='congratulation'>Add an Amount</p>
         <input type="number" placeholder="Amount" ref={inputRef} />
         <p
           className="error-msg"
@@ -74,7 +74,7 @@ function PlusWindow() {
         >
           You need to input a valid number
         </p>
-        <input type='text' placeholder=" "ref={categoryRef} />
+        <input type='text' placeholder="Category"ref={categoryRef} />
         <div className="currency-selector">
           <button style={{backgroundColor: currentCurrency.name === 'MDL' ? 'green' : '#D9D9D9', color: currentCurrency.name === 'MDL'?'white':'black'}} 
            onClick={() => handleCurrencyFormat('mdl')}>MDL</button>

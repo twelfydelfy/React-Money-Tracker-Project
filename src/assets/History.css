@@ -42,7 +42,7 @@ hr {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 320px;
+    width: 90%;
     height: 45px;
     border-radius: 15px;
     padding-left: 15px;
@@ -67,4 +67,22 @@ hr {
 .spendings-box .content-box{
     background: linear-gradient(to right, rgba(255, 0, 0, 0.7), rgba(222, 95, 97, 0.5));
     box-shadow: 3px 5px 4px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px){
+    .right-box{
+        margin-top: -50px;
+    }
+    .right-box{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .history-box h1{
+        text-align: center;
+    }
+    .content-box .content-amount{
+        font-size: 15px;
+    }
+    .content-box .content-name{
+        font-size: 15px;
+    }
 }

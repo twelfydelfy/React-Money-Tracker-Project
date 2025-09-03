@@ -54,10 +54,10 @@ function MinusWindow(){
         </button>
 
         <div className="prompt-box" style={{display: showPrompt? 'flex' : 'none'}}>
-            <p>Substract an Ammount</p>
+            <p className='congratulation'>Substract an Ammount</p>
             <input type="number" placeholder="Ammount" ref={inputRef}/>
             <p style={{display: errorMessage? 'inline-block':'none'}}>You need to input a corect number</p>
-            <input type="text" ref={categoryRef}/>
+            <input type="text" placeholder="Category" ref={categoryRef}/>
             <div className="currency-selector">
                 <button style={{backgroundColor: currentCurrency.name === 'MDL' ? 'green': '#D9D9D9', color: currentCurrency.name === 'MDL'?'white':'black'}} onClick={() => handleCurrencyFormat('mdl')}>MDL</button>
                 <button style={{backgroundColor: currentCurrency.name === 'USD' ? 'green': '#D9D9D9', color: currentCurrency.name === 'USD'?'white':'black'}} onClick={() => handleCurrencyFormat('usd')}>USD</button>

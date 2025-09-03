@@ -12,6 +12,10 @@
     align-items: center;
     border-radius: 50px;
 }
+.congratulation{
+    font-family: Inter;
+    font-size: 20px;
+}
 .prompt-box input{
     width: 70%;
     font-size: 30px;
@@ -48,4 +52,13 @@
 .cancel-button{
     background-color: #CD2626;
     color: white;
+}
+@media (max-width: 768px){
+    .prompt-box{
+        width: 90%;
+        left: -4%;
+        height: 70%;
+        padding-top: 0px;
+        top: 15%;
+    }
 }
